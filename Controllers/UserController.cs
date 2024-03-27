@@ -6,8 +6,17 @@ namespace MyFirstAPI.Controllers;
 public class UserController : ControllerBase
 {
     [HttpGet]
-    public IActionResult GetUser()
+    [Route("{id}")]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    public IActionResult GetUser(int id)
     {
-        return Ok("Primeira API");
+        var response = new User
+        {
+            Id = 1,
+            Name = "Test",
+            Age = 26,
+        };
+        return Ok(response);
     }
 }
