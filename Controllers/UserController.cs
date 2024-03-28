@@ -3,9 +3,8 @@ using MyFirstAPI.Communication.Requests;
 using MyFirstAPI.Communication.Responses;
 
 namespace MyFirstAPI.Controllers;
-[Route("api/[controller]")]
-[ApiController]
-public class UserController : ControllerBase
+
+public class UserController : BaseUrlController
 {
     [HttpGet]
     [Route("{id}")]
@@ -59,5 +58,13 @@ public class UserController : ControllerBase
             new User { Id = 2, Name = "Isabel", Age = 27 }
         };
         return Ok(response);
+    }
+
+    [HttpPut("change-password")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    public IActionResult ChangePasswordUser([FromBody] RequestChangePasswordJson request)
+    {
+
+        return NoContent();
     }
 }
