@@ -44,8 +44,20 @@ public class UserController : ControllerBase
 
     [HttpDelete]
     [Route("{id}")]
-    public  IActionResult DeleteUser([FromRoute] string id)
+    public IActionResult DeleteUser([FromRoute] string id)
     {
         return NoContent();
+    }
+
+    [HttpGet]
+    [ProducesResponseType( typeof(List<User>), StatusCodes.Status200OK)]
+    public IActionResult GetAllUsers()
+    {
+        var response = new List<User>() 
+        {
+            new User { Id = 1, Name = "Flávio", Age = 26 },
+            new User { Id = 2, Name = "Isabel", Age = 27 }
+        };
+        return Ok(response);
     }
 }
