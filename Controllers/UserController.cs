@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MyFirstAPI.Communication.Requests;
+using MyFirstAPI.Communication.Responses;
 
 namespace MyFirstAPI.Controllers;
 [Route("api/[controller]")]
@@ -18,5 +20,17 @@ public class UserController : ControllerBase
             Age = 26,
         };
         return Ok(response);
+    }
+
+    [HttpPost]
+    public IActionResult CreateUser([FromBody] RequestRegisterUserJson request)
+    {
+        var response = new ResponseRegisteredUserJson
+        {
+            UserId = 1,
+            UserName = "Flávio"
+        };
+
+        return Created(string.Empty, response);
     }
 }
