@@ -41,4 +41,11 @@ public class UserController : ControllerBase
     {
         return NoContent();
     }
+
+    [HttpDelete]
+    [Route("{id}")]
+    public  IActionResult DeleteUser([FromRoute] string id)
+    {
+        return NoContent();
+    }
 }
